@@ -3,6 +3,7 @@
 const int CUR_YAER = 2017;
 
 Car::Car(char* make, char* model, int year, int engineVolume, char* color)
+	: m_engineVolume(engineVolume)
 {
 	if (strlen(make) <= 9)
 	{
@@ -31,8 +32,6 @@ Car::Car(char* make, char* model, int year, int engineVolume, char* color)
 		throw "The year is invalid";
 	}
 
-	m_engineVolume = engineVolume;
-
 	if (strlen(model) <= 9)
 	{
 		strncpy_s(m_color, color, 9);
@@ -43,11 +42,18 @@ Car::Car(char* make, char* model, int year, int engineVolume, char* color)
 	}
 }
 
+Car::Car(Car &c) : m_year(c.m_year), m_engineVolume(c.m_engineVolume)
+{
+	strncpy_s(m_make, c.m_make, 9);
+	strncpy_s(m_model, c.m_model, 9);
+	strncpy_s(m_color, c.m_color, 9);
+}
+
 Car::~Car()
 {
 }
 
-void Car::printInfo()
+void Car::printInfo() const
 {
 	cout << "The company is: " << m_make << ".\n The model is: " << m_model
 		<< ".\n The year is: " << m_year << ".\n The engine Volume is: " << m_engineVolume

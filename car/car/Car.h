@@ -9,12 +9,13 @@ public:
 	input: gets car's info, checks the validation.
 	*/
 	 Car(char* make, char* model, int year, int engineVolume, char* color);
+	 Car(Car &c);
 	~ Car();
 
 	/*
 	print the car info
 	*/
-	void printInfo();
+	void printInfo() const;
 	
 	/*
 	compare two cars according the year

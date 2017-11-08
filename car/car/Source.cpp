@@ -33,13 +33,13 @@ void main()
 		cin >> color;
 		Car aCar2(make, model, year, engineVolume, color);
 
-		Car olderCar = older(aCar1, aCar2);
-		cout << "The older car is: ";
-		olderCar.printInfo();
+		const Car *olderCar = &older(aCar1, aCar2);
+		cout << "The older car is:\n";
+		olderCar->printInfo();
 
-		Car biggerCar = bigger(aCar1, aCar2);
-		cout << "The bigger car is: ";
-		biggerCar.printInfo();
+		const Car *biggerCar = &bigger(aCar1, aCar2);
+		cout << "The bigger car is:\n";
+		biggerCar->printInfo();
 	}
 	catch (const std::exception& ex)
 	{
